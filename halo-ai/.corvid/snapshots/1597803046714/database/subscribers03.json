@@ -1,0 +1,76 @@
+{
+  "displayName": "subscribers03",
+  "permissions": {
+    "insert": "anyone",
+    "update": "admin",
+    "remove": "admin",
+    "read": "admin"
+  },
+  "allowedOperations": [
+    "count",
+    "get",
+    "find",
+    "remove",
+    "insert",
+    "update"
+  ],
+  "id": "subscribers03",
+  "isDeleted": false,
+  "ownerAppId": null,
+  "displayNamespace": null,
+  "fields": {
+    "submissionTime": {
+      "plugin": "14ce1214-b278-a7e4-1373-00cebd1bef7c",
+      "displayName": "Submission Time",
+      "sortable": true,
+      "isDeleted": false,
+      "systemField": false,
+      "type": "datetime",
+      "index": 4
+    },
+    "email": {
+      "plugin": "14ce1214-b278-a7e4-1373-00cebd1bef7c",
+      "displayName": "Email",
+      "sortable": true,
+      "isDeleted": false,
+      "systemField": false,
+      "type": "text",
+      "index": 5
+    },
+    "_id": {
+      "displayName": "ID",
+      "sortable": true,
+      "isDeleted": false,
+      "systemField": true,
+      "type": "text",
+      "index": 0
+    },
+    "_owner": {
+      "displayName": "Owner",
+      "sortable": true,
+      "isDeleted": false,
+      "systemField": true,
+      "type": "text",
+      "index": 1
+    },
+    "_createdDate": {
+      "displayName": "Created Date",
+      "sortable": true,
+      "isDeleted": false,
+      "systemField": true,
+      "type": "datetime",
+      "index": 2
+    },
+    "_updatedDate": {
+      "displayName": "Updated Date",
+      "sortable": true,
+      "isDeleted": false,
+      "systemField": true,
+      "type": "datetime",
+      "index": 3
+    }
+  },
+  "displayField": "title",
+  "storage": "docstore",
+  "namespace": null
+}

@@ -1,0 +1,58 @@
+// Filename: backend/getRandomByte.jsw (web modules need to have a .jsw extension)
+
+import {fetch} from 'wix-fetch';
+
+// export function getRandomByte(data) {
+//   const url = 'https://localhost:5555/';
+//   console.log("Url: " + url);
+
+//   return fetch(url, {method: 'get'})
+//     .then(response => response.json())
+// }
+
+export async function getRandomBytes() {
+	/* API Call for Javascript PseudoRNG */
+	const response = await fetch("http://54.219.177.89:5555/numbers", {
+	/* API Call for Python PseudoRNG */
+  //  const response = await fetch("http://54.183.155.131:5000/numbers", {
+      method: 'GET',
+   })
+   const json = await response.json();
+   return json;
+}
+
+// export function getRandomBytes() {
+//   const url = 'https://localhost:5555/numbers';
+//   console.log("Url: " + url);
+
+//   return fetch(url, {method: 'get'})
+//     .then((response) => {
+// 		var result = response.data;
+// 		console.log('result:', result)
+// 		result.send();
+
+// //     if (response.status >= 200 && response.status < 300)
+// //    return response.text();
+// 	})
+// 	.catch((err) => {
+// 		console.log('error fetching random byte:', err)
+// 	})
+// }
+
+//Use the following code in one of your site's front-end files
+//to call the multiply function from backend/getRandomByte.jsw.
+
+/*
+import {multiply} from 'backend/getRandomByte';
+
+$w.onReady(function () {
+
+	multiply(4,5).then(product => {
+	    console.log(product);
+	      // Logs: 20
+	})
+	.catch(error => {
+		console.log(error);
+	});
+});
+*/
