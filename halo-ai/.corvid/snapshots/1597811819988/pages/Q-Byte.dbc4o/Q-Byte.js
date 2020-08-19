@@ -72,7 +72,7 @@ $w("#button9").label = random(0, 1).toString();
 
 
 
-    /* This section selects an 8-character word from the TextData db every 1000ms
+       /* This section selects an 8-character word from the TextData db every 1000ms
        to render to the 8 squares at the top of page originally populated with a byte
    */
 
@@ -80,11 +80,6 @@ $w("#button9").label = random(0, 1).toString();
     .find()
     .then ((results) => {
       let k = random(0, results.length);
-      // console.log('results.items[k].words', results.items[k].words)
-      if (results.items[k].words.length !== 8) {
-        k = random(0, results.length);
-        // console.log('redo results.items[k].words', results.items[k].words)
-      }
       $w("#button30").label = results.items[k].words[6].toUpperCase();
       $w("#button38").label = results.items[k].words[7].toUpperCase();
       let letterInd = 0;
@@ -136,14 +131,17 @@ $w("#button9").label = random(0, 1).toString();
 // When user clicks "select now",
   $w("#button1").onClick((event) => {
 
-   /* This section pulls from the actual TextData db and populates #text11 with data from the table at a pseudo-randomly generated index for each column
+   /* This sectionpulls from the actual TextData db and populates #text11 with data from the table
+     at a pseudo-randomly generated index
    */
-  console.log('select now has been clicked!', event.target.value)
+
   wixData.query("SampleData")
     .find()
     .then ((results)=> {
-
+      console.log('results.items for text11', results.items)
       let k = random(0, results.length);
+      console.log("results.length", results.length);
+      console.log('results.items[k]', results.items[k]);
       $w('#text11').text = `​\n${results.items[random(0, results.length)].phrases} \n​\n${results.items[random(0, results.length)].firstName} \n \n${results.items[random(0, results.length)].lastName} \n \n${results.items[random(0, results.length)].questions} \n \n${results.items[random(0, results.length)].answers} \n \n${results.items[random(0, results.length)].scienceTerms} \n \n${results.items[random(0, results.length)].songLyrics} \n \n${results.items[random(0, results.length)].words} \n \n​${results.items[random(0, results.length)].feminineFirstName} \n \n​${results.items[random(0, results.length)].masculineFirstName}`
     })
   .catch( (err) => {
@@ -154,7 +152,7 @@ $w("#button9").label = random(0, 1).toString();
 })
 
 
-/* use max10CharWords to filter words from dataset that are 10 chars or less*/
+
 
 //  const max10CharWords = words.filter()
 //    .gt("words", 20);
