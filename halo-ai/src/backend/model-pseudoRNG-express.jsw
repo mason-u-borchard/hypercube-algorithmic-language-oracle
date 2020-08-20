@@ -1,0 +1,31 @@
+const mongoose = require('mongoose');
+const db = require('./mongoose-pseudoRNG-express.jsw');
+
+const byteSchema = new mongoose.Schema({
+  id: { type: Number, unique: true },
+  byte: Array
+});
+
+const Byte = mongoose.model('Byte', byteSchema );
+
+
+// findAll retrieves all appimages data
+function findAll(callback) {
+  Byte.find({}, callback);
+}
+
+// findOne will retrieve the appimage associated with the given id
+function findOne(id, callback) {
+  Byte.find({ id: id }, callback);
+}
+// db.find({ id: id })
+
+// insertOne inserts one appImages schema into db
+function insertOne(schema, callback) {
+  Byte.create(schema, callback);
+}
+
+
+
+
+module.exports = Byte;

@@ -1,0 +1,61 @@
+// Filename: backend/getRandomByte.jsw (web modules need to have a .jsw extension)
+const path = require('path');
+const fs = require('fs');
+import {fetch} from 'wix-fetch';
+
+
+/* API Call for Local Javascript PseudoRNG */
+
+export async function getRandomLocalByte() {
+	fs.readFile('src/database/express-bytes.txt', 'utf8', function(err, data) {
+		if (err) {
+			throw err;
+		}  else {
+			var lines = data.split('\n');
+			var randInt = Math.floor(Math.random() * Math.floor(lines.length - 1))
+			console.log(randInt, lines[randInt]);
+			return lines[randInt];
+		}
+	});
+}
+
+/* API Call for Javascript PseudoRNG */
+
+// export async function getRandomBytes() {
+// 	const response = await fetch("http://54.219.177.89:5555/numbers", {
+// 	method: 'GET',
+// })
+// const json = await response.json();
+// return json;
+// }
+
+
+
+/* API Call for Python PseudoRNG */
+
+	export async function getRandomBytes() {
+		const response = await fetch("http://54.183.155.131:5000/numbers", {
+			method: 'GET',
+		})
+		 const result = await response.text();
+		 return result;
+	}
+
+
+//Use the following code in one of your site's front-end files
+//to call the multiply function from backend/getRandomByte.jsw.
+
+/*
+import {multiply} from 'backend/getRandomByte';
+
+$w.onReady(function () {
+
+	multiply(4,5).then(product => {
+	    console.log(product);
+	      // Logs: 20
+	})
+	.catch(error => {
+		console.log(error);
+	});
+});
+*/

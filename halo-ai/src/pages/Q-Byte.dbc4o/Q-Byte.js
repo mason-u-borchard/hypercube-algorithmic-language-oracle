@@ -1,14 +1,12 @@
 // For full API documentation, including code examples, visit https://wix.to/94BuAAs
 import sampleData from 'wix-data';
-import {getRandomBytes, getRandomLocalByte} from 'backend/getRandomBytes.jsw';
-import app from 'backend/express.jsw';
-// import {getRand} from 'backend/numpyPseudoRNG.py';
+import {getRandomBytes} from 'backend/getRandomBytes.jsw';
+import {getRandomByteExpress} from 'backend/express.jsw';
 import wixData from 'wix-data';
 import words from "wix-data";
 import {fetch} from 'wix-fetch';
 
-// import "express";
-// import path from "path";
+
 
 // In http-functions.js
 // URL looks like:
@@ -30,26 +28,25 @@ $w.onReady(function () {
  /* This function changes 'UP_TO_TEN_' to a different random word and
   simultaneously renders a different random byte every 1000ms */
 setInterval(function() {
-var array = getRandomBytes().then(
-  // var array = getRandomLocalByte().then(
-(res) => {
-  // console.log('getRandomLocalByte', getRandomLocalByte)
-  console.log('res',res)
+  /* getRandomBytes() will either grab data from python ec2 Ubuntu, javascript ec2 Ubuntu, or the built-in express pseudoRNG depending on which version of getRandomBytes() is enabled in getRandomBytes.jsw */
+var array = getRandomBytes().then((res) => {
+  console.log(res)
   return res;
 })
-	/* .then block for local Javascript Express PseudoRNG */
-  // .then((byte) => {
-  //   var bits = byte.split(',');
-  //     $w("#button2").label = bits[0];
-  //     $w("#button3").label = bits[1];
-  //     $w("#button4").label = bits[2];
-  //     $w("#button5").label = bits[3];
-  //     $w("#button6").label = bits[4];
-  //     $w("#button7").label = bits[5];
-  //     $w("#button8").label = bits[6];
-  //     $w("#button9").label = bits[7];
-  // })
-// 	/* .then block for Python PseudoRNG */
+	/* .then block for built-in express PseudoRNG */
+//   .then((byte) => {
+//   var bits = byte.split(',');
+//     $w("#button2").label = bits[0];
+//     $w("#button3").label = bits[1];
+//     $w("#button4").label = bits[2];
+//     $w("#button5").label = bits[3];
+//     $w("#button6").label = bits[4];
+//     $w("#button7").label = bits[5];
+//     $w("#button8").label = bits[6];
+//     $w("#button9").label = bits[7];
+// })
+
+	/* .then block for Python PseudoRNG */
 .then((byte) => {
   var byteStr = byte.slice(1, byte.length - 2);
   var bits = byteStr.split(' ');
@@ -62,6 +59,7 @@ var array = getRandomBytes().then(
     $w("#button8").label = bits[6];
     $w("#button9").label = bits[7];
 })
+
 	/* .then block for Javascript PseudoRNG */
 // .then((byteArr) => {
 //    let j = random(0, byteArr.length - 1);

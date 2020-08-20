@@ -1,23 +1,17 @@
 // Filename: backend/getRandomByte.jsw (web modules need to have a .jsw extension)
-const path = require('path');
-const fs = require('fs');
+
 import {fetch} from 'wix-fetch';
 
 
-/* API Call for Local Javascript PseudoRNG */
+/* API Call for Built-In Express PseudoRNG */
 
-export async function getRandomLocalByte() {
-	fs.readFile('src/database/express-bytes.txt', 'utf8', function(err, data) {
-		if (err) {
-			throw err;
-		}  else {
-			var lines = data.split('\n');
-			var randInt = Math.floor(Math.random() * Math.floor(lines.length - 1))
-			console.log(randInt, lines[randInt]);
-			return lines[randInt];
-		}
-	});
-}
+// export async function getRandomBytes() {
+// 	const response = await fetch("http://localhost:5005/one_byte", {
+// 		method: 'GET',
+// 	})
+// 	 const json = await response.json();
+// 	 return json;
+// }
 
 /* API Call for Javascript PseudoRNG */
 
@@ -40,6 +34,8 @@ export async function getRandomLocalByte() {
 		 const result = await response.text();
 		 return result;
 	}
+
+
 
 
 //Use the following code in one of your site's front-end files

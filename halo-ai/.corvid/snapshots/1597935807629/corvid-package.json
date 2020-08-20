@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"react": "16.13.1",
+		"jquery": "3.5.1",
+		"express": "4.17.1",
+		"request": "2.83.0",
+		"node-fs": "0.1.7"
+	}
+}

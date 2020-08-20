@@ -1,0 +1,9 @@
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/pseudoRNG-express', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+const db = mongoose.connection;
+
+ module.exports = db;

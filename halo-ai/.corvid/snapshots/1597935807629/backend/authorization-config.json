@@ -1,0 +1,83 @@
+{
+    "__version": 2,
+    "wix-data": {
+        "!default": {
+            "siteOwner": {
+                "insert": true,
+                "update": true,
+                "remove": true,
+                "read": true
+            },
+            "siteMember": {
+                "insert": false,
+                "update": false,
+                "remove": false,
+                "read": false
+            },
+            "anonymous": {
+                "insert": false,
+                "update": false,
+                "remove": false,
+                "read": false
+            },
+            "dataOwner": {
+                "update": false,
+                "remove": false,
+                "read": false
+            }
+        },
+        "subscribers03": {
+            "anonymous": {
+                "insert": true,
+                "update": false,
+                "remove": false,
+                "read": false
+            },
+            "siteMember": {
+                "insert": true,
+                "update": false,
+                "remove": false,
+                "read": false
+            },
+            "dataOwner": {
+                "update": false,
+                "remove": false,
+                "read": false
+            },
+            "siteOwner": {
+                "insert": true,
+                "update": true,
+                "remove": true,
+                "read": true
+            }
+        }
+    },
+    "web-methods": {
+        "*": {
+            "*": {
+                "siteOwner": {
+                    "invoke": true
+                },
+                "siteMember": {
+                    "invoke": true
+                },
+                "anonymous": {
+                    "invoke": true
+                }
+            }
+        },
+        "wix/data-web.jsw": {
+            "*": {
+                "siteOwner": {
+                    "invoke": true
+                },
+                "siteMember": {
+                    "invoke": true
+                },
+                "anonymous": {
+                    "invoke": true
+                }
+            }
+        }
+    }
+}

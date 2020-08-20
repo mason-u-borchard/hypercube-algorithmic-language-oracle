@@ -1,0 +1,20 @@
+var Byte = require('./model-pseudoRNG-express.jsw');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://database/pseudoRNG-express');
+
+
+
+setInterval(function(){
+  var bitArr = [];
+  for (var i = 0; i < 8; i++){
+    bitArr.push(Math.floor(Math.random() * Math.floor(2)));
+    }
+    console.log(bitArr);
+    Byte.insertOne(bitArr, (err, docs) => {
+      if (err) {
+        console.log(`Error populating db ${err}`);
+        return;
+      }
+      console.log('Done populating db!');
+    });
+}, 1000)
