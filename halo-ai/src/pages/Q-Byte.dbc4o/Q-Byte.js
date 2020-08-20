@@ -1,7 +1,7 @@
 // For full API documentation, including code examples, visit https://wix.to/94BuAAs
 import sampleData from 'wix-data';
-import {getRandomBytes} from 'backend/getRandomBytes.jsw';
-import {getRandomByteExpress} from 'backend/express.jsw';
+import {getRandomBytes, getRandomLocalByte} from 'backend/getRandomBytes.jsw';
+import app from 'backend/express.jsw';
 // import {getRand} from 'backend/numpyPseudoRNG.py';
 import wixData from 'wix-data';
 import words from "wix-data";
@@ -30,10 +30,26 @@ $w.onReady(function () {
  /* This function changes 'UP_TO_TEN_' to a different random word and
   simultaneously renders a different random byte every 1000ms */
 setInterval(function() {
-var array = getRandomBytes().then((res) => {
+var array = getRandomBytes().then(
+  // var array = getRandomLocalByte().then(
+(res) => {
+  // console.log('getRandomLocalByte', getRandomLocalByte)
+  console.log('res',res)
   return res;
 })
-	/* .then block for Python PseudoRNG */
+	/* .then block for local Javascript Express PseudoRNG */
+  // .then((byte) => {
+  //   var bits = byte.split(',');
+  //     $w("#button2").label = bits[0];
+  //     $w("#button3").label = bits[1];
+  //     $w("#button4").label = bits[2];
+  //     $w("#button5").label = bits[3];
+  //     $w("#button6").label = bits[4];
+  //     $w("#button7").label = bits[5];
+  //     $w("#button8").label = bits[6];
+  //     $w("#button9").label = bits[7];
+  // })
+// 	/* .then block for Python PseudoRNG */
 .then((byte) => {
   var byteStr = byte.slice(1, byte.length - 2);
   var bits = byteStr.split(' ');

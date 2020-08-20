@@ -25,23 +25,26 @@ app.get('/bytes', (req, res) => {
 });
 
 
-const getRandomByteExpress = function(){
+// const getRandomByteExpress = function (){
   app.get('/one_byte', (req, res) => {
-    fs.readFile('database/express_bytes.txt', 'utf8', function(err, data) {
+    fs.readFile('src/database/express-bytes.txt', 'utf8', function(err, data) {
       if (err) {
         throw err;
       }  else {
         var lines = data.split('\n');
-        var randInt = Math.floor(Math.random() * Math.floor(lines.length))
+        var randInt = Math.floor(Math.random() * Math.floor(lines.length - 1))
         console.log(randInt, lines[randInt]);
         res.send(lines[randInt]);
       }
     });
 
   });
-}
+// }
 
 
 app.listen(process.env.PORT || 5005, () => {
   console.log(`Listening at ${process.env.PORT || 5005}`)
 });
+
+
+module.exports = app;
