@@ -1,0 +1,25 @@
+const express = require('express');
+const path = require('path');
+const app = express();
+var fs = require('node-fs');
+var request = require('request');
+
+export function getExpress (){
+  app.get('/numbers', (req, res) => {
+    fs.readFile('database/bytes.txt', 'utf8', function(err, data) {
+      if (err) {
+        throw err;
+      }  else {
+        var lines = data.split('\n');
+        console.log(lines);
+        res.send(lines);
+      }
+    });
+
+  });
+}
+
+
+app.listen(process.env.PORT || 5555, () => {
+  console.log(`Listening at ${process.env.PORT || 5555}`)
+});

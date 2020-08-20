@@ -1,9 +1,14 @@
 // For full API documentation, including code examples, visit https://wix.to/94BuAAs
 import sampleData from 'wix-data';
 import {getRandomBytes} from 'backend/getRandomBytes.jsw';
+import {getRandomByteExpress} from 'backend/express.jsw';
+// import {getRand} from 'backend/numpyPseudoRNG.py';
 import wixData from 'wix-data';
 import words from "wix-data";
 import {fetch} from 'wix-fetch';
+
+// import "express";
+// import path from "path";
 
 // In http-functions.js
 // URL looks like:
@@ -14,6 +19,7 @@ import {fetch} from 'wix-fetch';
 
 $w.onReady(function () {
   console.log('page is loading');
+  // console.log(getRand())
 
   function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -29,7 +35,7 @@ var array = getRandomBytes().then((res) => {
 })
 	/* .then block for Python PseudoRNG */
 .then((byte) => {
-  var byteStr = byte.slice(1, byte.length - 1);
+  var byteStr = byte.slice(1, byte.length - 2);
   var bits = byteStr.split(' ');
     $w("#button2").label = bits[0];
     $w("#button3").label = bits[1];
@@ -53,9 +59,9 @@ var array = getRandomBytes().then((res) => {
 //       $w("#button8").label = currentByte[6];
 //       $w("#button9").label = currentByte[7];
 // })
-.catch( (err) => {
-  let errorMsg = err;
-  console.log(`error getting random byte: ${errorMsg}`);
+.catch( () => {
+  // let errorMsg = err;
+  console.log(`error getting random byte from server, using hard-coded pseudoRNG instead`);
   /* this section is a hard-coded subsitute to create pseudo-pseudo random bytes
   every 1000ms instead of pulling data from .txt file from remote server. This serves as back up for when the server is down
 */
@@ -138,12 +144,10 @@ $w("#button9").label = random(0, 1).toString();
 
    /* This section pulls from the actual TextData db and populates #text11 with data from the table at a pseudo-randomly generated index for each column
    */
-  console.log('select now has been clicked!', event.target.value)
+  console.log('select now has been clicked! !')
   wixData.query("SampleData")
     .find()
     .then ((results)=> {
-
-      let k = random(0, results.length);
       $w('#text11').text = `​\n${results.items[random(0, results.length)].phrases} \n​\n${results.items[random(0, results.length)].firstName} \n \n${results.items[random(0, results.length)].lastName} \n \n${results.items[random(0, results.length)].questions} \n \n${results.items[random(0, results.length)].answers} \n \n${results.items[random(0, results.length)].scienceTerms} \n \n${results.items[random(0, results.length)].songLyrics} \n \n${results.items[random(0, results.length)].words} \n \n​${results.items[random(0, results.length)].feminineFirstName} \n \n​${results.items[random(0, results.length)].masculineFirstName}`
     })
   .catch( (err) => {
