@@ -1,0 +1,20 @@
+colums are mixed and they won't get the same experience when they come over repeatedly.
+
+format so that instead of a straight line it's a grid
+
+we currently have one word from each column, but we would want the first and last name.
+a grid of 16 words -- one from each column other than the sentences (this placement makes it so people will subconsciously form sentences from the world)
+
+
+
+then another column would be a sentence (colloquialisms or saying), and render under the grid
+    - work towards forming actual sentences with machine learning algorithms. 
+    - first step for this would be tracking number of "select now" clicks in the 
+        form of dates. If I can implement that, machine learning algorithms will be able 
+        to distinguish differences in complex data. They will run a binary classification problem 
+        (a type of machine learning approach where you have two things you are trying to distinguish, 
+        you'd run the dates and the binary classification problem would find patterns in the RNG data. 
+        and then run a complex neural network. Can the machine distinguish the RNG data during the time 
+        when people are interacting with the site vs when they are not. (ie: the machine learning
+        algorithm will figure out that when there are observations, the data forms a curve of sin(3x), 
+        and then the machine looks for those trends)
