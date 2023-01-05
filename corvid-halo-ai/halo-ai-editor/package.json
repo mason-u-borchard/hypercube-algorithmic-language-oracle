@@ -1,5 +1,6 @@
 {
   "name": "halo-ai-editor",
+  "author": "Mason U. Borchard",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
